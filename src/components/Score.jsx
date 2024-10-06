@@ -1,9 +1,10 @@
 import { useState } from "react";
 
-function Score() {
+function Score({ currentScore, bestScore }) {
   return (
     <div className="score-container">
-      <h1>Score stuff</h1>
+      <h2>Current Score: {currentScore}</h2>
+      <h2>Best Score: {bestScore}</h2>
     </div>
   );
 }
