@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import RenderCards from "./RenderCards";
 
 function Cards() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -33,19 +34,7 @@ function Cards() {
     lol();
   }, []);
 
-  return (
-    <div className="cards-container">
-      {pokemonList.length > 0 &&
-        pokemonList.map((pokemon) => {
-          return (
-            <div className="card-single" key={pokemon.name}>
-              <h2>{pokemon.name}</h2>
-              <img src={pokemon.imageUrl} alt={pokemon.name + " img"} />
-            </div>
-          );
-        })}
-    </div>
-  );
+  return <RenderCards pokemonList={pokemonList} />;
 }
 
 export default Cards;

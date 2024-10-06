@@ -1,4 +1,4 @@
-function renderCards({ pokemonList }) {
+function RenderCards({ pokemonList }) {
   return (
     <div className="cards-container">
       {pokemonList.length > 0 &&
@@ -13,3 +13,5 @@ function renderCards({ pokemonList }) {
     </div>
   );
 }
+
+export default RenderCards;
