@@ -28,10 +28,8 @@ function Cards() {
           "https://pokeapi.co/api/v2/pokemon?limit=15"
         );
         const data = await response.json();
-
+        console.log(data);
         const listOfPokemons = data.results;
-        const pokemonNames = listOfPokemons.map((pokemon) => pokemon.name);
-
         const pokemonsNameAndImageList = listOfPokemons.map(async (pokemon) => {
           const response = await fetch(`${pokemon.url}`);
           const data = await response.json();
@@ -43,8 +41,8 @@ function Cards() {
         });
 
         const upadtedPokemonList = await Promise.all(pokemonsNameAndImageList);
-        console.log(upadtedPokemonList);
         setPokemonList(upadtedPokemonList);
+        console.log(upadtedPokemonList);
       } catch (error) {
         console.log("error fetching pokemon data");
         // here - we will make default data
@@ -63,7 +61,7 @@ function Cards() {
       {pokemonList.length > 0 &&
         pokemonList.map((pokemon) => {
           return (
-            <div className="card-single">
+            <div className="card-single" key={pokemon.name}>
               <h2>{pokemon.name}</h2>
               <img src={pokemon.imageUrl} alt={pokemon.name + " img"} />
             </div>
