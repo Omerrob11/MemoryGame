@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import RenderCards from "./RenderCards";
 
-function Cards() {
+function Cards({ handleCardClick }) {
   const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ function Cards() {
         const upadtedPokemonNameAndImageList = await Promise.all(
           pokemonsNameAndImageList
         );
+        console.log(upadtedPokemonNameAndImageList);
         setPokemonList(upadtedPokemonNameAndImageList);
       } catch (error) {
         console.log("error fetching pokemon data");
@@ -34,7 +35,9 @@ function Cards() {
     lol();
   }, []);
 
-  return <RenderCards pokemonList={pokemonList} />;
+  return (
+    <RenderCards pokemonList={pokemonList} handleCardClick={handleCardClick} />
+  );
 }
 
 export default Cards;
