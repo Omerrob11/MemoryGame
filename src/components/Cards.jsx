@@ -4,7 +4,7 @@ import RenderCards from "./RenderCards";
 const POKEMON_COUNT = 15;
 const TOTAL_POKEMON = 500;
 
-function Cards({ handleCardClick }) {
+function Cards({ handleCardClick, isLoading, gameSessionCounter, loadCards }) {
   const [pokemonList, setPokemonList] = useState([]);
 
   useEffect(() => {
@@ -71,14 +71,20 @@ function Cards({ handleCardClick }) {
         // we return a list of promises, so we resolved them and get the pokemons
         const pokemonList = await Promise.all(pokemonPromises);
         setPokemonList(pokemonList);
-        console.log(pokemonList);
+
+        // set is loading to false, to load the cards
+        loadCards();
       } catch (error) {
         console.error("error fetchjing stuff", error);
       }
     }
-    fetchRandomPokemons();
-  }, []);
 
+    fetchRandomPokemons();
+  }, [gameSessionCounter]);
+
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <RenderCards pokemonList={pokemonList} handleCardClick={handleCardClick} />
   );
