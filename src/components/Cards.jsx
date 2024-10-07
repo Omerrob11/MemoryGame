@@ -25,7 +25,6 @@ function Cards({ handleCardClick }) {
         const upadtedPokemonNameAndImageList = await Promise.all(
           pokemonsNameAndImageList
         );
-        console.log(upadtedPokemonNameAndImageList);
         setPokemonList(upadtedPokemonNameAndImageList);
       } catch (error) {
         console.log("error fetching pokemon data");
