@@ -3,7 +3,6 @@ import { useState } from "react";
 const numOfRenderedPokemon = 9;
 
 function RenderCards({ pokemonList, handleCardClick }) {
-  // console.log(pokemonList);
   const renderedPokemonList = getRandomItems(pokemonList, numOfRenderedPokemon);
 
   return (
