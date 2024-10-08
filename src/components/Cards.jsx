@@ -47,7 +47,7 @@ function Cards({ handleCardClick, isLoading, gameSessionCounter, loadCards }) {
         // a set pf unique pokemon id
         const uniquePokemonIds = new Set();
         // get 15 unique pokemon id
-        while (uniquePokemonIds.size < 15) {
+        while (uniquePokemonIds.size < POKEMON_COUNT) {
           uniquePokemonIds.add(Math.floor(Math.random() * TOTAL_POKEMON) + 1);
         }
 
@@ -82,6 +82,10 @@ function Cards({ handleCardClick, isLoading, gameSessionCounter, loadCards }) {
     fetchRandomPokemons();
   }, [gameSessionCounter]);
 
+  // set state with async inside useEffect
+  // do we setState before the useEffect finish, or after?
+
+  // change to isloading instead of test
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
